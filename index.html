@@ -20,27 +20,27 @@
 
         body {
             font-family: 'Kanit', sans-serif;
-            background-color: #070b19; 
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            min-height: 100vh;
-        }
-
-        /* กรอบหลักขนาดจอมือถือพร้อมรูปพื้นหลัง[cite: 1] */
-        .mobile-container {
-            width: 100%;
-            max-width: 480px;
-            min-height: 100vh;
+            /* ตั้งค่ารูปพื้นหลังเต็มจอ[cite: 1] */
             background-image: linear-gradient(rgba(10, 15, 35, 0.4), rgba(10, 15, 35, 0.65)), url('images/bg.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            padding: 56px 24px 40px;
+            background-attachment: fixed;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* คอนเทนต์หลักจัดกึ่งกลางและจำกัดความกว้างไม่ให้ปุ่มยาวเกินไปบนจอใหญ่ */
+        .main-container {
+            width: 100%;
+            max-width: 440px;
+            padding: 40px 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 0 35px rgba(0, 0, 0, 0.6); 
         }
 
         /* ส่วนรูปโปรไฟล์ */
@@ -98,7 +98,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* ปรับไอคอนให้ชัดเจนขึ้น ขยายขนาด และเพิ่มพื้นหลังวงกลมรองรับไอคอน */
+        /* ไอคอนคมชัดพร้อมวงกลมรองรับ */
         .link-btn i {
             position: absolute;
             left: 20px;
@@ -159,7 +159,7 @@
 </head>
 <body>
 
-    <main class="mobile-container">
+    <main class="main-container">
         <!-- 1. รูปโปรไฟล์ -->
         <div class="profile-wrapper">
             <img src="images/profile.jpg" alt="Cheer Shirakuma" class="profile-img">
