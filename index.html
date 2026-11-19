@@ -12,15 +12,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
+        /* แก้จาก - เป็น * เพื่อให้รีเซ็ตค่าเริ่มต้นได้ถูกต้อง */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            /* ปิดแถบไฮไลต์สีฟ้า/เทาเวลาแตะบนมือถือทั้งเว็บ */
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             font-family: 'Kanit', sans-serif;
-            /* ตั้งค่ารูปพื้นหลังเต็มจอ[cite: 1] */
             background-image: linear-gradient(rgba(10, 15, 35, 0.4), rgba(10, 15, 35, 0.65)), url('images/bg.jpg');
             background-size: cover;
             background-position: center;
@@ -96,6 +98,21 @@
             border: 1px solid rgba(255, 255, 255, 0.22);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* ลบเส้นขอบและไฮไลต์แปลกๆ ตอนแตะหรือ focus */
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        /* ป้องกันไม่ให้เกิดกรอบสี่เหลี่ยมตอนกดบนมือถือ แต่ยังรองรับการกด Tab บนคอม */
+        .link-btn:focus {
+            outline: none;
+        }
+
+        .link-btn:focus-visible {
+            outline: 2px solid rgba(125, 211, 252, 0.8);
+            outline-offset: 3px;
         }
 
         /* ไอคอนคมชัดพร้อมวงกลมรองรับ */
@@ -113,20 +130,24 @@
             transition: transform 0.3s ease;
         }
 
-        /* เอฟเฟกต์ตอนเอาเมาส์ชี้หรือกด */
-        .link-btn:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.2);
-            border-color: rgba(255, 255, 255, 0.5);
-            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+        /* เอฟเฟกต์ตอนเอาเมาส์ชี้ (ทำงานเฉพาะอุปกรณ์ที่มีเมาส์ ไม่ค้างบนมือถือ) */
+        @media (hover: hover) {
+            .link-btn:hover {
+                transform: translateY(-3px);
+                background: rgba(255, 255, 255, 0.2);
+                border-color: rgba(255, 255, 255, 0.5);
+                box-shadow: 0 10px 25px rgba(56, 189, 248, 0.3);
+            }
+
+            .link-btn:hover i {
+                transform: scale(1.1);
+            }
         }
 
-        .link-btn:hover i {
-            transform: scale(1.1);
-        }
-
+        /* เอฟเฟกต์ตอนนิ้วกดลงไป */
         .link-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
+            background: rgba(255, 255, 255, 0.22);
         }
 
         /* โทนสีพิเศษสำหรับแต่ละปุ่ม */
@@ -135,10 +156,12 @@
             border-color: rgba(125, 211, 252, 0.4);
         }
 
-        .link-btn.donate:hover {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.45), rgba(168, 85, 247, 0.45));
-            border-color: rgba(186, 230, 253, 0.8);
-            box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+        @media (hover: hover) {
+            .link-btn.donate:hover {
+                background: linear-gradient(135deg, rgba(56, 189, 248, 0.45), rgba(168, 85, 247, 0.45));
+                border-color: rgba(186, 230, 253, 0.8);
+                box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
+            }
         }
 
         .link-btn.donate i {
@@ -166,21 +189,21 @@
         </div>
 
         <!-- 2. ชื่อ -->
-        <h1 class="profile-name">Cheer Shirakuma</h1>
+        <h1 class="profile-name">Cheerimizu</h1>
 
         <!-- 3. ปุ่มช่องทางติดต่อ -->
         <div class="links-wrapper">
-            <a href="https://easydonate.app/shirakuma" target="_blank" rel="noopener noreferrer" class="link-btn donate">
+            <a href="https://ezdn.app/cheerimizu" target="_blank" rel="noopener noreferrer" class="link-btn donate">
                 <i class="fa-solid fa-hand-holding-heart"></i>
-                <span>โดเนท Cheer | easydonate</span>
+                <span>โดเนท | easydonate</span>
             </a>
 
-            <a href="https://www.instagram.com/shirakuma.c" target="_blank" rel="noopener noreferrer" class="link-btn ig">
+            <a href="https://www.instagram.com/cheerimizu/" target="_blank" rel="noopener noreferrer" class="link-btn ig">
                 <i class="fa-brands fa-instagram"></i>
                 <span>Instagram</span>
             </a>
 
-            <a href="https://www.tiktok.com/@shirakuma.c" target="_blank" rel="noopener noreferrer" class="link-btn tiktok">
+            <a href="https://www.tiktok.com/@cheerimizu" target="_blank" rel="noopener noreferrer" class="link-btn tiktok">
                 <i class="fa-brands fa-tiktok"></i>
                 <span>TikTok</span>
             </a>
